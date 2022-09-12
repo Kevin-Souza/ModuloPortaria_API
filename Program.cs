@@ -31,6 +31,12 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    );
+
 #region API
 
 app.MapGet("/visitante", async (ModuloPortaria.Data.AppCont DbContext) => await DbContext.visitantes.ToListAsync());
